@@ -240,7 +240,7 @@ const MarketPlaceInputs = () => {
 
                                                                                 <img src={item.perPic} width="20%"></img>
 
-                                                                                <small className="text-muted" onClick={() => {
+                                                                                <small className="market-person-name" onClick={() => {
                                                                                      setCheckSellerInfo(true);
                                                                                      setSellerName(item.perName);
                                                                                      setSellerPic(item.perPic);

@@ -10,9 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faThumbsUp,
     faThumbsDown,
+    faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { Routes, Route, Link } from "react-router-dom";
-
 
 const data = [
     {
@@ -79,7 +79,14 @@ const CheckSellerInfo = props => {
     return (
         <div className={classes.backdrop} onClick={props.closeCheckSellerHandler}>
             <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
-
+                <div className="return-button">
+                    <FontAwesomeIcon
+                        className="return-button-close"
+                        icon={faCircleXmark}
+                        onClick={props.closeCheckSellerHandler}
+                        size="2x"
+                    />
+                </div>
                 <img className={classes.seller} src={props.checkSellerPic} width="20%"></img>
                 {/* {props.checkSellerName} */}
                 <div className={classes.buttonGroup}>
