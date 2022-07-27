@@ -57,34 +57,55 @@ const data = [
 ];
 
 
+const Sellerdata = [
+    {
+        Id: 1,
+        perName: "Eric Smith",
+        perPic: img1,
+        Intro: "I like everything about vehicle"
+    },
+    {
+        Id: 2,
+        perName: "Sam Smith",
+        perPic: img1,
+        Intro: "I like everything about vehicle"
+    },
+];
+
+
 const CheckSellerInfo = props => {
 
     console.log(data.filter(person => person.perName == props.checkSellerName)[1].perPic);
-
     return (
         <div className={classes.backdrop} onClick={props.closeCheckSellerHandler}>
             <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
 
-                <img src={props.checkSellerPic} width="10%"></img>
-                {props.checkSellerName}
-                <div>
+                <img className={classes.seller} src={props.checkSellerPic} width="20%"></img>
+                {/* {props.checkSellerName} */}
+                <div className={classes.buttonGroup}>
                     <Button>Follow</Button>
+                    {' '}
                     <Button>View Profile</Button>
+                    {' '}
                     <Button>Report</Button>
                 </div>
-
-                <div>
+                <div className="border-top"></div>
+                <div className={classes.sellerTitle}>
                     About
                 </div>
-
-                <div>
+                {Sellerdata.filter(person => person.perName == props.checkSellerName).map((item) => (
+                    <div className={classes.sellerAbout}>
+                        {item.Intro}
+                    </div>
+                ))}
+                <div className="border-top" style={{ marginLeft: "5px" }}></div>
+                <div className={classes.sellerTitle}>
                     Listing
                 </div>
-
                 <div className={classes.prod_container}>
-                    <div class="row">
+                    <div class="row g-3">
                         {data.filter(person => person.perName == props.checkSellerName).map((item) => (
-                            <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <Card key={item.Id}>
                                     <CardImg
                                         className="cardimg"
@@ -96,15 +117,11 @@ const CheckSellerInfo = props => {
                                     />
                                     <CardBody>
                                         <CardText>
-
                                             <div className="market-person">
-
                                                 <img src={item.perPic} width="20%"></img>
-
                                                 <small className="text-muted">
                                                     &nbsp; {item.perName}
                                                 </small>
-
                                                 <FontAwesomeIcon
                                                     className="iconN"
                                                     icon={faThumbsUp}
@@ -146,12 +163,7 @@ const CheckSellerInfo = props => {
 
                     </div>
                 </div>
-
-
-
                 <div>
-
-
                 </div>
             </div>
         </div >
